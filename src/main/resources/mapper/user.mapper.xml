@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mitaole.dao.UserDao">
+
+    <resultMap id="baseResultMap" type="com.qfedu.mitaole.bean.TbUser">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="userTel" column="user_tel"/>
+        <result property="salt" column="salt"/>
+    </resultMap>
+
+    <select id="selectUserByName" resultMap="baseResultMap">
+        select * from tb_user where user_name=#{userName};
+    </select>
+
+    <insert id="addTbUser" parameterType="com.qfedu.mitaole.bean.TbUser">
+        insert into
+            tb_user (user_name,user_password,user_tel,salt)
+        values (#{userName},#{userPassword},#{userTel},#{salt})
+    </insert>
+
+</mapper>

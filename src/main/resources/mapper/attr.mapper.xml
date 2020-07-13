@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mitaole.dao.AttrDao">
+
+    <resultMap id="resultMessage" type="com.qfedu.mitaole.bean.Information">
+        <id property="discountId" column="discount_id"/>
+        <result property="attrId" column="attr_id"/>
+        <result property="attrName" column="attr_name"/>
+        <result property="disPhoneId" column="dis_phone_id"/>
+        <result property="attrvalueId" column="attrvalue_id"/>
+        <result property="discount" column="discount"/>
+        <result property="valId" column="val_id"/>
+        <result property="valAttrVal" column="val_attr_val"/>
+        <result property="valDesc" column="val_desc"/>
+        <result property="valAttrId" column="val_attr_id"/>
+    </resultMap>
+
+    <select id="selectAllMessage" resultMap="resultMessage">
+        SELECT * FROM tb_attr,tb_discount,tb_attr_val WHERE
+            tb_attr_val.`val_attr_id`=tb_attr.`attr_id` AND
+            tb_discount.`attrvalue_id`=tb_attr_val.`val_id` AND dis_phone_id=#{disPhoneId} AND attr_id=#{attrId}
+    </select>
+
+    <resultMap id="resultAttr" type="com.qfedu.mitaole.bean.TbAttr">
+        <id property="attrId" column="attr_id"/>
+        <result property="attrName" column="attr_name"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="resultAttr">
+        select * from tb_attr where attr_id=#{attrId}
+    </select>
+
+</mapper>

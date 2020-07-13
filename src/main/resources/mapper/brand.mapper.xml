@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mitaole.dao.BrandDao">
+
+    <resultMap id="resultAllBrand" type="com.qfedu.mitaole.bean.TbBrand">
+        <id property="brandId" column="brand_id"/>
+        <result property="brandName" column="brand_name"/>
+    </resultMap>
+
+    <select id="selectAllBrandName" resultMap="resultAllBrand">
+        select brand_id,brand_name from tb_brand
+    </select>
+
+</mapper>

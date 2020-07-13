@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mitaole.dao.PhoneDao">
+
+    <resultMap id="resultPhone" type="com.qfedu.mitaole.bean.TbPhone">
+        <id property="phoneId" column="phone_id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="phoneName" column="phone_name"/>
+        <result property="phonePrice" column="phone_price"/>
+        <result property="phoneCategoryId" column="phone_category_id"/>
+        <result property="phoneImg" column="phone_img"/>
+        <result property="goodFirstPrice" column="good_first_price"/>
+        <result property="goodSecondPrice" column="good_second_price"/>
+        <result property="goodThirdPrice" column="good_third_price"/>
+        <result property="goodForthPrice" column="good_forth_price"/>
+        <result property="goodFifthPrice" column="good_fifth_price"/>
+    </resultMap>
+
+    <select id="selectPhoneList" resultMap="resultPhone">
+        select *  from tb_phone
+    </select>
+
+    <select id="selectByBrandIdPhone" resultMap="resultPhone">
+        select *  from tb_phone where brand_id=#{brandId}
+    </select>
+
+    <select id="selectPhone" resultMap="resultPhone">
+        select *  from tb_phone where phone_id=#{phoneId}
+    </select>
+
+    <resultMap id="resultDis" type="com.qfedu.mitaole.bean.TbDiscount">
+        <id property="discountId" column="discount_id"/>
+        <result property="disPhoneId" column="dis_phone_id"/>
+        <result property="attrvalueId" column="attrvalue_id"/>
+        <result property="discount" column="discount"/>
+    </resultMap>
+
+    <select id="selectDis" resultMap="resultDis">
+        select discount from tb_discount where discount_id=#{discountId}
+    </select>
+
+</mapper>
