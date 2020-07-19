@@ -223,16 +223,17 @@
                         <span class="next_link"><a href="${pageContext.request.contextPath}/phone/brand?currentPageStr=${phoneList.prePage}&<%=abc%>">上一页</a>
                     </c:if>
 
-                    <c:forEach begin="1" end="${phoneList.navigateLastPage}" step="1" var="pageNum">
+                    <c:forEach begin="1" end="${phoneList.pages}" step="1" var="pageNum">
+<%--                        <c:forEach begin="1" end="${phoneList.navigateLastPage}" step="1" var="pageNum">--%>
                         <c:if test="${pageNum == phoneList.pageNum}">
                             <a class="cur_link">${pageNum}</a>
                         </c:if>
-                        <c:if test="${pageNum > phoneList.pageNum}">
-                            <span><a href="${pageContext.request.contextPath}/phone/brand?currentPageStr=${phoneList.pageNum + 1}&<%=abc%>">${pageNum}</a></span>
+                        <c:if test="${pageNum != phoneList.pageNum}">
+                            <span><a href="${pageContext.request.contextPath}/phone/brand?currentPageStr=${pageNum}&<%=abc%>">${pageNum}</a></span>
                         </c:if>
-                        <c:if test="${pageNum < phoneList.pageNum}">
-                            <span><a href="${pageContext.request.contextPath}/phone/brand?currentPageStr=${phoneList.pageNum - 1}&<%=abc%>">${pageNum}</a></span>
-                        </c:if>
+<%--                        <c:if test="${pageNum < phoneList.pageNum}">--%>
+<%--                            <span><a href="${pageContext.request.contextPath}/phone/brand?currentPageStr=${pageNum}&<%=abc%>">${pageNum}</a></span>--%>
+<%--                        </c:if>--%>
 
                     </c:forEach>
 
